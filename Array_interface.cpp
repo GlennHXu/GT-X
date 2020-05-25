@@ -19,7 +19,7 @@ bool delete_arr(struct Arr * pArr, int pos, int * pVal);//É¾³ıÒ»¸öÔªËØ,²¢·µ»ØÉ¾³
 bool iis_empty( struct Arr * pArr);//ÅĞ¶ÏÊı×éÀïÔªËØÊÇ·ñÎª¿Õ
 bool is_full(struct Arr * pArr); //ÅĞ¶ÏÊı×éÀïÔªËØÊÇÎªÂú
 
-int get();//»ñÈ¡Êı×éÖĞµÄÔªËØ
+int get(struct Arr * pArr, int pos, int * pVal);//»ñÈ¡Êı×éÖĞµÄÔªËØ
 void sort_arr(struct Arr * pArr);//½«Êı×éÖĞÔªËØÅÅĞò
 void show_arr(struct Arr * pArr);//ÏÔÊ¾³öÊı×éÔªËØ
 void inversion_arr(struct Arr * pArr);//µßµ¹Êı×éÖĞÁ½¸öÔªËØÎ»ÖÃ
