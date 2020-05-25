@@ -28,7 +28,8 @@ int main(void)
 {
 
 	struct Arr arr;
-	int val;
+	int val;// 存放删除了的元素
+	int tal;//存放获取到的元素
 	init_arr(&arr,6);
 	show_arr(&arr);
 	append_arr(&arr, 1);
@@ -36,6 +37,7 @@ int main(void)
 	append_arr(&arr, -3);
 	append_arr(&arr, 6);
 	append_arr(&arr, 88);
+	
 	//append_arr(&arr, 77);
 	insert_arr(&arr,3, 23);
 	// delete_arr(&arr, 1, &val);
@@ -67,6 +69,9 @@ int main(void)
 	sort_arr(&arr);
 	cout << "排序之后的数组内容是：" << endl;
 	show_arr(&arr);
+	get(&arr, 6, &tal);
+	cout << "数组获取数组内元素是：" << tal << endl;
+	
 		return 0;
 
 }
@@ -201,4 +206,14 @@ void sort_arr(struct Arr * pArr)
 		}
 	}
 	return;
+}
+// 10、获取元素
+int get(struct Arr * pArr, int pos, int * pVal)
+{
+	if (iis_empty(pArr))//判断数组是否为空
+		return false;
+	if (pos<1 || pos>pArr->cnt)
+		return false;
+	*pVal = pArr->pBase[pos - 1];
+	return 0;
 }
