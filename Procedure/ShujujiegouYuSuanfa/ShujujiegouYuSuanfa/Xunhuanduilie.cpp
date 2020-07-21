@@ -1,7 +1,10 @@
+// 实现循环队列
+
 #include<iostream>
 #include<malloc.h>
 
 using namespace std;
+// 定义一个结构体，里面存放分配数组的首地址，序号
 typedef struct Qqueue
 {
 	int * pBase;
@@ -9,16 +12,17 @@ typedef struct Qqueue
 	int rear;
 }QUEUE;
 
-void init(QUEUE *);
-bool en_queue(QUEUE *, int val);
-void traverse_queue(QUEUE *);
-bool full_queue(QUEUE *);
-bool out_queue(QUEUE*, int *);
-bool emput_queue(QUEUE *);
+void init(QUEUE *);  // 初始化队列
+bool en_queue(QUEUE *, int val); // 给队列赋值
+void traverse_queue(QUEUE *); // 遍历循环队列
+bool full_queue(QUEUE *);   // 判断队列是否为满
+bool out_queue(QUEUE*, int *); // 出队
+bool emput_queue(QUEUE *);  // 判断队列是否为空
 
+// 主函数
 int main(void)
 {
-	QUEUE Q;
+	QUEUE Q; // 定义结构体 Q
 	int val;
 
 	init(&Q);
@@ -44,6 +48,8 @@ int main(void)
 	return 0;
 
 }
+
+// 1、 初始化队列，分配数组内存
 void init(QUEUE * pQ)
 {
 	pQ->pBase = (int *)malloc(sizeof(int) * 6);
@@ -52,6 +58,7 @@ void init(QUEUE * pQ)
 
 }
 
+// 2、判断队列是否为满
 bool full_queue(QUEUE *pQ)
 {
 	if ((pQ->rear + 1) % 6 == pQ->front)
@@ -59,6 +66,8 @@ bool full_queue(QUEUE *pQ)
 	else
 		return false;
 }
+
+// 3、入队
 bool en_queue(QUEUE * pQ, int val)
 {
 	if (full_queue(pQ))
@@ -73,6 +82,7 @@ bool en_queue(QUEUE * pQ, int val)
 	}
 }
 
+// 4、遍历
 void traverse_queue(QUEUE *pQ)
 {
 	int i = pQ->front;
@@ -84,6 +94,8 @@ void traverse_queue(QUEUE *pQ)
 	cout << endl;
 	return;
 }
+
+// 5、判断队列是否为空
 bool emput_queue(QUEUE * pQ)
 {
 	if (pQ->front == pQ->rear)
@@ -91,7 +103,8 @@ bool emput_queue(QUEUE * pQ)
 	else
 		return false;
 }
-
+ 
+// 6、出队
 bool out_queue(QUEUE *pQ, int * pVal)
 {
 	if (emput_queue(pQ))
@@ -101,7 +114,7 @@ bool out_queue(QUEUE *pQ, int * pVal)
 	else
 	{
 		*pVal = pQ->pBase[pQ->front];
-		pQ->front = (pQ->front + 1) % 6;
+		pQ->front = (pQ->front + 1) % 6; 
 		return true;
 	}
 }
